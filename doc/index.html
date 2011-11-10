@@ -15,12 +15,16 @@
 	<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
 	
   <!-- Themes -->
-  <link rel="stylesheet" href="deck.js/themes/style/forpas.css">
+  <link rel="stylesheet" href="deck.js/themes/style/android.css">
+  
+  <!-- Syntax highlighter -->
+  <script src="syntax/scripts/shCore.js"></script>
+  <script src="syntax/scripts/shBrushScript.js"></script>
   
   <!-- Syntax highlighter -->
   <link rel="stylesheet" href="syntax/styles/shCore.css">
   <link rel="stylesheet" href="syntax/styles/shThemeEclipse.css">
-
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
 
 	<script src="deck.js/modernizr.custom.js"></script>
 </head>
@@ -59,7 +63,7 @@
  <h2>¿Qué es Android para un NO Freak?</h2>
  Definición
  <div class="command">
-<b>Android</b> es un sistema operativo basado en el núcleo Linux diseñado originalmente para dispositivos móviles, pero que posteriormente se expandió su desarrollo para soportar otros dispositivos tales como tablet, reproductores MP3, netbook, PC, etc. 
+	<strong>Android</strong> es un sistema operativo basado en el núcleo Linux diseñado originalmente para dispositivos móviles, pero que posteriormente se expandió su desarrollo para soportar otros dispositivos tales como tablet, reproductores MP3, netbook, PC, etc. 
 </div>
 </section>
 
@@ -67,7 +71,7 @@
  <h2>¿Qué es Android para un NO Freak?</h2>
  Definición
  <div class="command">
-	<b>Android</b> es un sistema operativo basado en el núcleo Linux diseñado originalmente para dispositivos móviles, pero que posteriormente se expandió su desarrollo para soportar otros dispositivos tales como tablet, reproductores MP3, netbook, PC, etc. 
+	<strong>Android</strong> es un sistema operativo basado en el núcleo Linux diseñado originalmente para dispositivos móviles, pero que posteriormente se expandió su desarrollo para soportar otros dispositivos tales como tablet, reproductores MP3, netbook, PC, etc. 
  </div>
  <img src="http://farm4.static.flickr.com/3138/3034640646_b7f1ba5ec8.jpg" />
 </section>
@@ -167,16 +171,44 @@ Manifest.xml
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
 <div style="text-align:center;">Hello World!</div>
-Uso:
-<ul>
-	<li>
-		Controlador encargado de una vista.
-	</li>
-</ul>
+Activity
+<pre class="brush: js;">
+package com.georemindme;
+import android.app.Activity;
+import android.os.Bundle;
+
+public class mainActivity extends Activity {
+	@Override
+	public void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.conect);
+	}
+	@Override
+	public void onStart(){
+		super.onStart();
+	}
+	@Override
+	public void onResume(){
+		super.onResume();
+	}
+	@Override
+	public void onPause(){
+		super.onPause();
+	}
+	@Override
+	public void onStop(){
+		super.onStop();
+	}
+	@Override
+	public void onDestroy(){
+		super.onDestroy();
+	}
+}
+</pre>
 </section>
 
 <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
-<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>	
 
 <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
@@ -187,10 +219,6 @@ Uso:
 <script src="deck.js/extensions/navigation/deck.navigation.js"></script>
 <script src="deck.js/extensions/hash/deck.hash.js"></script>
 <script src="deck.js/extensions/deck.events.js"></script>
-
-<!-- Syntax highlighter -->
-<script src="syntax/scripts/shCore.js"></script>
-<script src="syntax/scripts/shBrushBash.js"></script>
 
 
 <!-- Specific to this page -->
