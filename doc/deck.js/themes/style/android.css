@@ -1,0 +1,126 @@
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+@import url(http://fonts.googleapis.com/css?family=Actor);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono);
+/* Green Android A2BC42 */
+/* ~ pink */
+/* magenta */
+/* darker red */
+/* orange */
+.titlebgpage {
+  background: #fc3c62 !important; }
+  .titlebgpage h1, .titlebgpage h2, .titlebgpage h3 {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 2px rgba(100, 100, 100, 0.2); }
+  .titlebgpage .slide {
+    padding-top: 4em !important; }
+
+.deck-container {
+  font-family: Actor, "Helvetica Neue", sans-serif;
+  font-size: 2em;
+  color: #444;
+  background: rgba(250, 246, 172, 0.5);
+  /* Old browsers */
+  background: -moz-linear-gradient(top, white 0%, rgba(250, 246, 172, 0.5) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, rgba(250, 246, 172, 0.5)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, white 0%, rgba(250, 246, 172, 0.5) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, white 0%, rgba(250, 246, 172, 0.5) 100%);
+  /* Opera11.10+ */
+  background: -ms-linear-gradient(top, white 0%, rgba(250, 246, 172, 0.5) 100%);
+  /* IE10+ */
+  background: linear-gradient(top, white 0%, rgba(250, 246, 172, 0.5) 100%);
+  /* W3C */
+  background-attachment: fixed; }
+  .deck-container .slide {
+    background: transparent;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2); }
+  .deck-container h1 {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    border: 0;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    color: #A2BC42; }
+  .deck-container h2, .deck-container h3, .deck-container h4 {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    border: 0;
+    color: #A2BC42; }
+  .deck-container blockquote {
+    font-size: 2em;
+    font-style: italic;
+    padding: 1em 2em;
+    color: #000;
+    border-left: 5px solid #ccc; }
+    .deck-container blockquote p {
+      margin: 0; }
+    .deck-container blockquote cite {
+      font-size: .5em;
+      font-style: normal;
+      font-weight: bold;
+      color: #888; }
+  .deck-container ::-moz-selection {
+    background: #fc3c62;
+    color: #fff; }
+  .deck-container ::selection {
+    background: #fc3c62;
+    color: #fff; }
+  .deck-container a, .deck-container a:hover, .deck-container a:focus, .deck-container a:active, .deck-container a:visited {
+    color: #ed171b;
+    text-decoration: none; }
+  .deck-container a:hover, .deck-container a:focus {
+    text-decoration: underline; }
+  .deck-container .deck-prev-link, .deck-container .deck-next-link {
+    background: #ccc;
+    font-family: serif; }
+    .deck-container .deck-prev-link, .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-prev-link:active, .deck-container .deck-prev-link:visited, .deck-container .deck-next-link, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus, .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
+      color: #fff; }
+    .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus {
+      background: #c00;
+      text-decoration: none; }
+  .deck-container .deck-status {
+    font-size: 0.6666em; }
+  .deck-container.deck-menu .slide {
+    background: #eee; }
+  .deck-container.deck-menu .deck-current, .no-touch .deck-container.deck-menu .slide:hover {
+    background: #ddf; }
+  .deck-container ul {
+    list-style-type: none;
+    margin-left: 1em;
+    margin-bottom: 0;
+    padding: 0; }
+    .deck-container ul li {
+      background-image: url(data:image/gif;base64,R0lGODlhCgAKAJEAAAAAAP///9MZGf///yH5BAEAAAMALAAAAAAKAAoAAAISlDaGqHnLXosUulqbfll6uEEFADs%3D) !important;
+      background-repeat: no-repeat !important;
+      background-position: 0 .7em !important;
+      padding-left: .9em !important; }
+  .deck-container dl dt {
+    font-weight: bold; }
+  .deck-container dl dd {
+    padding-left: 1em;
+    margin-bottom: .5em; }
+  .deck-container strong {
+    font-weight: bold;
+    color: #ed171b; }
+  .deck-container pre {
+    font-family: "Ubuntu Mono", monospace;
+    text-shadow: none;
+    padding: 0.3em;
+    margin: 0.5em; }
+  .deck-container div.command {
+    font-family: "Ubuntu Mono", monospace;
+    text-shadow: none;
+    padding: 0.3em;
+    margin: 0.5em;
+    border: 1px solid #ccc;
+    background-color: #fafafa; }
+  .deck-container .authors {
+    font-size: 120%; }
+    .deck-container .authors a {
+      font-family: "Ubuntu Mono", monospace; }
+  .deck-container .sectionchange {
+    background-image: url(data:image/gif;base64,R0lGODlhCwALAJEAAAAAAP///zGwBP///yH5BAEAAAMALAAAAAALAAsAAAITnI8pibvsxjtOxCYz1Iz3D4ZGAQA7);
+    background-repeat: none;
+    display: block;
+    width: 11px;
+    height: 11px;
+    float: right; }
