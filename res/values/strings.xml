@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="hello">Hello World, mainActivity!</string>
-    <string name="app_name">Android_QR_Code</string>
-    
-   	<!-- captureQRCodeActivity -->
-    <string name="dialogo">Consiguiendo la siguiente pista grumete!!</string>
-</resources>
