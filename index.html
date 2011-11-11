@@ -19,12 +19,13 @@
   
   <!-- Syntax highlighter -->
   <script src="syntax/scripts/shCore.js"></script>
-  <script src="syntax/scripts/shBrushScript.js"></script>
+  <script src="syntax/scripts/shBrushJScript.js"></script>
   
   <!-- Syntax highlighter -->
   <link rel="stylesheet" href="syntax/styles/shCore.css">
   <link rel="stylesheet" href="syntax/styles/shThemeEclipse.css">
   <script type="text/javascript">SyntaxHighlighter.all();</script>
+
 
 	<script src="deck.js/modernizr.custom.js"></script>
 </head>
@@ -172,11 +173,7 @@ Manifest.xml
  <h2>¿Cómo se programa en Android?</h2>
 <div style="text-align:center;">Hello World!</div>
 Activity
-<pre class="brush: js;">
-package com.georemindme;
-import android.app.Activity;
-import android.os.Bundle;
-
+<pre class="brush: js;" style="font-size: 9px;">
 public class mainActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -225,6 +222,173 @@ Intent i = new Intent(getApplicationContext(), captureQRCodeActivity.class);
 i.putExtra("pista", 1);
 startActivity(i);
 </pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+<div style="text-align:center;">Hello World!</div>
+Manifest.xml
+<pre class="brush: js;" style="font-size: ">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.pepico" 
+android:versionCode="1"
+android:versionName="1.0">
+  <uses-sdk android:minSdkVersion="8" />
+   <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".PepicoActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>
+</pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+<div style="text-align:center;">Hello World!</div>
+</br>
+</br>
+<img src="./img/empty_proyect.png">
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+<div style="text-align:center;">Android_QR_Code!</div>
+</br>
+</br>
+<img src="./img/mvc.png">
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+Protocolo
+ <pre class="brush: js;">
+/**
+ * Interfaz donde se define todo el protocolo de mensajes de la aplicación 
+ * 
+ * @author Ricardo C.
+ */
+public interface ControllerProtocol
+{
+
+	int REQUEST =			100;
+	int RESPONSE_OK =		200;
+	int RESPONSE_ERROR = 	500;
+
+
+}
+ </pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+Controller
+ <pre class="brush: js;">
+public class Controller extends MVCController {
+
+	private static final String LOG = "GeoRemindMe";
+
+	private static Controller instance;
+	private MVCControllerStateInterface	state;
+	private Context context;
+	private Server server;
+
+
+	public static Controller getInstace(Context context)
+	{
+		Log.v(LOG, "Controller-getInstance (context)");
+
+		if (instance == null)
+			instance = new Controller(context);
+
+		return instance;
+	}
+	protected Controller(Context context)
+	{		
+		super(context);
+		this.context = context;
+
+		Log.v(LOG, "Controller-Controller (context)");
+
+		// Creamos el estado y lo registramos en el MVC
+		state = new ReadyState(this);
+		this.changeMVCState(state);
+
+
+		server = Server.getInstance(context, this);
+	}
+}
+ </pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+Controller
+ <pre class="brush: js;">
+package org.georemindme.controller;
+
+import android.os.Message;
+
+public interface ControllerState
+{
+	boolean handleMessage(Message msg);
+}
+ </pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+Controller
+ <pre class="brush: js;">
+public class ReadyState implements MVCControllerStateInterface
+{
+	private static final String LOG = "GeoRemindMe";
+
+	private final Controller controller;
+
+	public ReadyState(Controller controller)
+	{
+		this.controller = controller;
+	}
+
+	public boolean handleMessage(Message msg)
+	{
+		Log.v(LOG, "ReadyState-Receive What: " + msg.what + " || Obj: " + msg.obj);
+
+		// El estado del controlador recibe los mensajes y realiza las acciones necesarias para cada uno de ellos
+		switch(msg.what)
+		{ 				
+			case REQUEST:
+				controller.getServerInstance().dameLaSiguientePista((String) msg.obj);
+				return true;
+			case RESPONSE_OK:
+				controller.broadcastMessage(msg);
+				return true;			
+			case RESPONSE_ERROR:
+				controller.broadcastMessage(msg);
+				return true;
+
+		}
+		return false;
+	}
+
+	private void onRequestQuit()
+	{
+		// TODO Auto-generated method stub
+		controller.quit();
+	}
+}
+ </pre>
 </section>
 
 <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
