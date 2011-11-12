@@ -112,7 +112,6 @@ public class Server implements Serializable {
 					else {
 						controller.sendMessage(RESPONSE_ERROR);
 					}
-					// No se porque me genera dos catch. REVISAR
 				} catch (JSONRPCException e) {
 					// TODO Auto-generated catch block
 					controller.sendMessage(RESPONSE_ERROR);
