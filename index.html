@@ -34,6 +34,7 @@
 
 <section class="slide">
  <h1>Android</h1>
+<!--<img src="./img/cupcake.gif">-->
 </section>
 
 <section class="slide">
@@ -62,7 +63,9 @@
 
 <section class="slide">
  <h2>¿Qué es Android para un NO Freak?</h2>
- Definición
+<dl>
+ <dt>Definición</dt>
+</dl>
  <div class="command">
 	<strong>Android</strong> es un sistema operativo basado en el núcleo Linux diseñado originalmente para dispositivos móviles, pero que posteriormente se expandió su desarrollo para soportar otros dispositivos tales como tablet, reproductores MP3, netbook, PC, etc. 
 </div>
@@ -70,7 +73,9 @@
 
 <section class="slide">
  <h2>¿Qué es Android para un NO Freak?</h2>
- Definición
+<dl>
+ <dt>Definición</dt>
+</dl>
  <div class="command">
 	<strong>Android</strong> es un sistema operativo basado en el núcleo Linux diseñado originalmente para dispositivos móviles, pero que posteriormente se expandió su desarrollo para soportar otros dispositivos tales como tablet, reproductores MP3, netbook, PC, etc. 
  </div>
@@ -102,7 +107,9 @@
 </br>
 </br>
 </br>
-Activity
+<dl>
+<dt>Activity</dt>
+</dl>
 </br>
 </br>
 <div style="text-align:center;"><div class="command">Una actividad es una View</div></div>
@@ -114,7 +121,9 @@ Activity
 </br>
 </br>
 </br>
-Service
+<dl>
+<dt>Service</dt>
+</dl>
 </br>
 </br>
 <div style="text-align:center;"><div class="command">Un componente que corre en background</div></div>
@@ -126,7 +135,9 @@ Service
 </br>
 </br>
 </br>
-Content Provider
+<dl>
+<dt>Content Provider</dt>
+</dl>
 </br>
 </br>
 <div style="text-align:center;"><div class="command">Gestor de contenido de alto nivel</div></div>
@@ -138,7 +149,9 @@ Content Provider
 </br>
 </br>
 </br>
-Broadcast Receiver
+<dl>
+<dt>Broadcast Receiver</dt>
+</dl>
 </br>
 </br>
 <div style="text-align:center;"><div class="command">Componente que responde a los mensajes del sistema</div></div>
@@ -150,7 +163,9 @@ Broadcast Receiver
 </br>
 </br>
 </br>
-Intent
+<dl>
+<dt>Intent</dt>
+</dl>
 </br>
 </br>
 <div style="text-align:center;"><div class="command">Encargado de activar los componentes</div></div>
@@ -162,7 +177,9 @@ Intent
 </br>
 </br>
 </br>
-Manifest.xml
+<dl>
+<dt>Manifest.xml</dt>
+</dl>
 </br>
 </br>
 <div style="text-align:center;"><div class="command">Definición de los componentes del programa</div></div>
@@ -170,14 +187,18 @@ Manifest.xml
 
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
-Resultado:
+<dl>
+	<dt>Resultado:</dt>
+</dl>
 <img src="./img/empty_proyect.png">
 </section>
 
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
 <div style="text-align:center;">Hello World!</div>
-Activity
+<dl>
+<dt>Activity</dt>
+</dl>
 <pre class="brush: js;" style="font-size: 9px;">
 public class mainActivity extends Activity {
 	@Override
@@ -212,7 +233,9 @@ public class mainActivity extends Activity {
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
 <div style="text-align:center;">Hello World!</div>
-Activity
+<dl>
+<dt>Activity</dt>
+</dl>
 <br>
 <br>
 <img src="./img/activity_lifecycle.png">
@@ -221,7 +244,9 @@ Activity
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
 <div style="text-align:center;">Hello World!</div>
-Intent
+<dl>
+<dt>Intent</dt>
+</dl>
 <pre class="brush: js;">
 Intent i = new Intent(getApplicationContext(), captureQRCodeActivity.class);
 i.putExtra("pista", 1);
@@ -232,7 +257,9 @@ startActivity(i);
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
 <div style="text-align:center;">Hello World!</div>
-Manifest.xml
+<dl>
+<dt>Manifest.xml</dt>
+</dl>
 <pre class="brush: js;" style="font-size: ">
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -254,8 +281,27 @@ package="com.pepico">
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
 <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>Puesta a punto</dt>
 <br>
-MVC (Model View Controller)
+</dl>
+<ul>
+	<li>Clonar proyecto</li>
+	<div class="command">git <strong>clone</strong> git@github.com:GeoRemindMe/Android_QR_Code.git</div>
+	<li>Importar a Eclipse</li>
+	<div class="command">Archivo -> Importar</div>
+	<li>Si da algún error</li>
+	<div class="command">Android Tools -> Fix Project Properties</div>
+</ul>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+<div style="text-align:center;">Android_QR_Code!</div>
+<br>
+<dl>
+<dt>MVC (Model View Controller)</dt>
+</dl>
 </br>
 </br>
 <img src="./img/mvc.png">
@@ -264,7 +310,9 @@ MVC (Model View Controller)
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-Controller
+<dl>
+<dt>Controller</dt>
+</dl>
  <pre class="brush: js;">
 public class Controller extends MVCController {
 
@@ -282,7 +330,9 @@ public class Controller extends MVCController {
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-Controller
+<dl>
+<dt>Controller</dt>
+</dl>
  <pre class="brush: js;">
 public static Controller getInstace(Context context)
 	{
@@ -313,7 +363,9 @@ public static Controller getInstace(Context context)
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-Controller
+<dl>
+<dt>ControllerState</dt>
+</dl>
  <pre class="brush: js;">
 package org.georemindme.controller;
 
@@ -329,7 +381,9 @@ public interface ControllerState
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-Controller
+<dl>
+<dt>ReadyState</dt>
+</dl>
  <pre class="brush: js;">
 public class ReadyState implements MVCControllerStateInterface
 {
@@ -348,7 +402,9 @@ public class ReadyState implements MVCControllerStateInterface
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-Controller
+<dl>
+<dt>ReadyState</dt>
+</dl>
  <pre class="brush: js;">
 public boolean handleMessage(Message msg)
 	{
@@ -376,7 +432,9 @@ public boolean handleMessage(Message msg)
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-Protocolo
+<dl>
+<dt>ControllerProtocol</dt>
+</dl>
  <pre class="brush: js;">
 /**
  * Interfaz donde se define todo el protocolo de mensajes de la aplicación 
@@ -398,7 +456,9 @@ public interface ControllerProtocol
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-Server
+<dl>
+<dt>Server</dt>
+</dl>
  <pre class="brush: js;">
 	// URL de peticion
 	private static final String URL = "http://www.rauljimenez.info/dev/tallerAndroid/api.php?id=";
@@ -420,7 +480,9 @@ Server
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-Server
+<dl>
+<dt>Server</dt>
+</dl>
  <pre class="brush: js;">
 	public final void dameLaSiguientePista(final String pista)
 		{
@@ -471,7 +533,9 @@ Server
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
- App
+<dl>
+<dt>App</dt>
+</dl>
  <pre class="brush: js;">
 public class App extends Application {
 
@@ -522,7 +586,9 @@ public class App extends Application {
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-JSONRPCHttpClient
+<dl>
+<dt>JSONRPCHttpClient</dt>
+</dl>
  <pre class="brush: js;">
 public class JSONRPCHttpClient extends JSONRPCClient
 {
@@ -550,7 +616,9 @@ public class JSONRPCHttpClient extends JSONRPCClient
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-JSONRPCHttpClient
+<dl>
+<dt>JSONRPCHttpClient</dt>
+</dl>
  <pre class="brush: js;">
 public JSONRPCHttpClient(String uri)
 	{
@@ -566,18 +634,18 @@ public JSONRPCHttpClient(String uri)
 		Log.d("json-rpc", "JSONRPCHttpClient-doRequest(method, params)");
 
 		// Copy method arguments in a json array
-				JSONArray jsonParams = new JSONArray();
-				if (params != null)
-					for (int i = 0; i < params.length; i++)
-					{
-						jsonParams.put(params[i]);
-					}
+		JSONArray jsonParams = new JSONArray();
+		if (params != null)
+			for (int i = 0; i < params.length; i++)
+			{
+				jsonParams.put(params[i]);
+			}
 
-				// Create the json request object
-				JSONObject jsonRequest = new JSONObject();
-				methodUri = method;
+		// Create the json request object
+		JSONObject jsonRequest = new JSONObject();
+		methodUri = method;
 
-				return doJSONRequest(jsonRequest);
+		return doJSONRequest(jsonRequest);
 	}
 
  </pre>
@@ -586,7 +654,9 @@ public JSONRPCHttpClient(String uri)
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
  <div style="text-align:center;">Android_QR_Code!</div>
-JSONRPCHttpClient
+<dl>
+<dt>JSONRPCHttpClient</dt>
+</dl>
  <pre class="brush: js;">
 protected JSONObject doJSONRequest(JSONObject jsonRequest)
 			throws JSONRPCException
@@ -671,6 +741,11 @@ protected JSONObject doJSONRequest(JSONObject jsonRequest)
 		}
 	}
  </pre>
+</section>
+
+<section class="slide">
+ <h1>¡Hora de programar!</h1>
+<!--<img src="./img/cupcake.gif">-->
 </section>
 
 
