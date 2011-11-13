@@ -93,8 +93,7 @@
 
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
-Resultado:
-<p>(Captura de un proyecto vacío)</p>
+<div style="text-align:center;">Conceptos básicos</div>
 </section>
 
 <section class="slide">
@@ -171,6 +170,12 @@ Manifest.xml
 
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
+Resultado:
+<img src="./img/empty_proyect.png">
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
 <div style="text-align:center;">Hello World!</div>
 Activity
 <pre class="brush: js;" style="font-size: 9px;">
@@ -178,7 +183,7 @@ public class mainActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.conect);
+		setContentView(R.layout.main);
 	}
 	@Override
 	public void onStart(){
@@ -231,9 +236,7 @@ Manifest.xml
 <pre class="brush: js;" style="font-size: ">
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="com.pepico" 
-android:versionCode="1"
-android:versionName="1.0">
+package="com.pepico">
   <uses-sdk android:minSdkVersion="8" />
    <application android:icon="@drawable/icon" android:label="@string/app_name">
         <activity android:name=".PepicoActivity"
@@ -243,7 +246,6 @@ android:versionName="1.0">
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 </manifest>
 </pre>
@@ -251,15 +253,9 @@ android:versionName="1.0">
 
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
-<div style="text-align:center;">Hello World!</div>
-</br>
-</br>
-<img src="./img/empty_proyect.png">
-</section>
-
-<section class="slide">
- <h2>¿Cómo se programa en Android?</h2>
 <div style="text-align:center;">Android_QR_Code!</div>
+<br>
+MVC (Model View Controller)
 </br>
 </br>
 <img src="./img/mvc.png">
