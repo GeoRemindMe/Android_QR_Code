@@ -39,11 +39,4 @@ public class ReadyState implements MVCControllerStateInterface
 		}
 		return false;
 	}
-
-
-	private void onRequestQuit()
-	{
-		// TODO Auto-generated method stub
-		controller.quit();
-	}
 }

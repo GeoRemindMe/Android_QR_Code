@@ -55,16 +55,7 @@ public class Server implements Serializable {
 	{
 		Log.v(LOG, "Server-Server (context, controller)");
 		
-		// Por si queremos capturar algún mensaje en el servidor
-		connector = new MVCViewComponent(controller)
-		{
-			
-			public boolean handleMessage(Message msg)
-			{
-				// TODO Auto-generated method stub
-				return false;
-			}
-		};
+		
 		this.controller = controller;
 		
 	}

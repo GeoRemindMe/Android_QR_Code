@@ -50,13 +50,7 @@ public class JSONRPCHttpClient extends JSONRPCClient
 	/*
 	 * Service URI
 	 */
-	private String							serviceUri;
-	
-	/*
-	 * Session Id
-	 */
-	private String							sessionId;
-	
+	private String							serviceUri;	
 	/*
 	 * Service Method
 	 */
