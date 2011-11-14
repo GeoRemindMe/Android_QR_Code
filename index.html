@@ -463,36 +463,47 @@ public interface ControllerProtocol
 
 					// Abrimos la conexion
 					openConnection ();
+ </pre>
+</section>
 
-					try {
-						// Hacemos la peticion
-						response = connection.callJSONObject(pista);
-						closeConnection();
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>Server</dt>
+</dl>
+ <pre class="brush: js;">
+try {
+	// Hacemos la peticion
+	response = connection.callJSONObject(pista);
+	closeConnection();
 
-						// Capturamos los datos necesarios recibidos por el servidor
-						if (response.optString("Pista"+pista) != "") {
-							String pistilla = response.getString("Pista"+pista);
-							// Todo ha ido perfecto, avisamos al controllador y le mandamos los datos
-							controller.sendMessage(RESPONSE_OK, pistilla);
-						}
-						else {
-							controller.sendMessage(RESPONSE_ERROR);
-						}
-						// No se porque me genera dos catch. REVISAR
-					} catch (JSONRPCException e) {
-						// TODO Auto-generated catch block
-						controller.sendMessage(RESPONSE_ERROR);
-						e.printStackTrace();
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						controller.sendMessage(RESPONSE_ERROR);
-						e.printStackTrace();
-					}
-				}
-			};
-			// Lanzamos la hebra
-			thread.start();	
-		}
+	// Capturamos los datos necesarios recibidos por el servidor
+	if (response.optString("Pista"+pista) != "") {
+		String pistilla = response.getString("Pista"+pista);
+		// Todo ha ido perfecto, avisamos al controllador y le mandamos los datos
+		controller.sendMessage(RESPONSE_OK, pistilla);
+	}
+	else {
+		controller.sendMessage(RESPONSE_ERROR);
+	}
+} catch (JSONRPCException e) {
+	// TODO Auto-generated catch block
+	controller.sendMessage(RESPONSE_ERROR);
+	e.printStackTrace();
+}
+ </pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>Server</dt>
+</dl>
+ <pre class="brush: js;">
+// Lanzamos la hebra
+thread.start();	
  </pre>
 </section>
 
@@ -506,8 +517,6 @@ public interface ControllerProtocol
 public class App extends Application {
 
 	private static final String	LOG	= "GeoRemindMe";
-
-	private static App	singleton;
 
 	private Controller	controller;
 
@@ -623,90 +632,53 @@ public JSONRPCHttpClient(String uri)
 <dl>
 <dt>JSONRPCHttpClient</dt>
 </dl>
- <pre class="brush: js;">
-protected JSONObject doJSONRequest(JSONObject jsonRequest)
-			throws JSONRPCException
-	{
-		if (serviceUri.startsWith("https"))
-		{
-			HostnameVerifier hostnameVerifier = org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
+<ul>
+<li>Creamos la petición con la url necesaria
+<pre class="brush: js;">
+protected JSONObject doJSONRequest(JSONObject jsonRequest) throws JSONRPCException {
+// Create HTTP/POST request with a JSON entity containing the request
+	HttpPost request = new HttpPost(serviceUri + methodUri);
+</pre>
+</li>
+</section>
 
-			DefaultHttpClient client = new DefaultHttpClient();
-
-			SchemeRegistry registry = new SchemeRegistry();
-			SSLSocketFactory socketFactory = SSLSocketFactory.getSocketFactory();
-			socketFactory.setHostnameVerifier((X509HostnameVerifier) hostnameVerifier);
-			registry.register(new Scheme("https", socketFactory, 443));
-			SingleClientConnManager mgr = new SingleClientConnManager(client.getParams(), registry);
-			DefaultHttpClient httpClient = new DefaultHttpClient(mgr, client.getParams());
-
-			// Set verifier
-			HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
-		}
-        
-		// Create HTTP/POST request with a JSON entity containing the request
-		HttpPost request = new HttpPost(serviceUri + methodUri);
-		HttpParams params = new BasicHttpParams();
-		HttpConnectionParams.setConnectionTimeout(params, getConnectionTimeout());
-		HttpConnectionParams.setSoTimeout(params, getSoTimeout());
-
-		HttpProtocolParams.setVersion(params, PROTOCOL_VERSION);
-		request.setParams(params);
-
-		HttpEntity entity;
-		try
-		{
-			entity = new JSONEntity(jsonRequest);
-		}
-		catch (UnsupportedEncodingException e1)
-		{
-			throw new JSONRPCException("Unsupported encoding", e1);
-		}
-		request.setEntity(entity);
-
-		try
-		{
-			// Execute the request and try to decode the JSON Response
-			long t = System.currentTimeMillis();
-			HttpResponse response = httpClient.execute(request);
-			t = System.currentTimeMillis() - t;
-			Log.d("json-rpc", "Request Package :" + request.toString());
-			Log.d("json-rpc", "Request time :" + t);
-			Log.d("json-rpc", "URL :" + serviceUri + methodUri);
-			Log.d("json-rpc", "Params :" + jsonRequest);
-			String responseString = EntityUtils.toString(response.getEntity());
-			responseString = responseString.trim();
-			Log.d("json-rpc", "response: "+responseString);
-			Log.d("json-rpc", "----------------------------------------------------------------------------------");
-			JSONObject jsonResponse = new JSONObject(responseString);
-			// Check for remote errors
-			if (jsonResponse.has("error"))
-			{
-				Object jsonError = jsonResponse.get("error");
-				if (!jsonError.equals(null))
-					throw new JSONRPCException(jsonResponse.get("error"));
-				return jsonResponse; // JSON-RPC 1.0
-			}
-			else
-			{
-				return jsonResponse; // JSON-RPC 2.0
-			}
-		}
-		// Underlying errors are wrapped into a JSONRPCException instance
-		catch (ClientProtocolException e)
-		{
-			throw new JSONRPCException("HTTP error", e);
-		}
-		catch (IOException e)
-		{
-			throw new JSONRPCException("IO error", e);
-		}
-		catch (JSONException e)
-		{
-			throw new JSONRPCException("Invalid JSON response", e);
-		}
-	}
- </pre>
+<section class="slide">
+<h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>JSONRPCHttpClient</dt>
+</dl>
+<ul>
+<li>Ejecutamos la request
+<pre class="brush: js;">
+// Execute the request and try to decode the JSON Response
+long t = System.currentTimeMillis();
+HttpResponse response = httpClient.execute(request);
+t = System.currentTimeMillis() - t;
+Log.d("json-rpc", "Request Package :" + request.toString());
+Log.d("json-rpc", "Request time :" + t);
+Log.d("json-rpc", "URL :" + serviceUri + methodUri);
+Log.d("json-rpc", "Params :" + jsonRequest);
+String responseString = EntityUtils.toString(response.getEntity());
+responseString = responseString.trim();
+Log.d("json-rpc", "response: "+responseString);
+Log.d("json-rpc", "----------------------------------------------------------------------------------");
+JSONObject jsonResponse = new JSONObject(responseString);
+// Check for remote errors
+if (jsonResponse.has("error"))
+{
+	Object jsonError = jsonResponse.get("error");
+	if (!jsonError.equals(null))
+		throw new JSONRPCException(jsonResponse.get("error"));
+	return jsonResponse; // JSON-RPC 1.0
+}
+else
+{
+	return jsonResponse; // JSON-RPC 2.0
+}
+</pre>
+</li>
+</ul>
 </section>
 
 <section class="slide">
