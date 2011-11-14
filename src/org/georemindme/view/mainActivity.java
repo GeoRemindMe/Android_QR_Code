@@ -26,7 +26,7 @@ public class mainActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {			
 			public void onClick(View v) {
 				Intent i = new Intent(getApplicationContext(), captureQRCodeActivity.class);
-				i.putExtra("pista", 1);
+				i.putExtra("pista", "1");
 				startActivity(i);
 				
 			}

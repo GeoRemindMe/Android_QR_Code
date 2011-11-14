@@ -8,9 +8,7 @@ import android.util.Log;
 public class App extends Application {
 	
 	private static final String	LOG	= "GeoRemindMe";
-	
-	private static App	singleton;
-	
+		
 	private Controller	controller;
 	
 	public void onCreate()

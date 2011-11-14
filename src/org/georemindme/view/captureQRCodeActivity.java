@@ -30,7 +30,7 @@ public class captureQRCodeActivity extends Activity {
 	private TextView _pista;
 	private ProgressDialog _dialog;
 	
-	private int _idPista;
+	private String _idPista = null;
 	
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -46,7 +46,12 @@ public class captureQRCodeActivity extends Activity {
         
         // Capturamos el Intent y vemos si tiene algun dato para nosotros
         Intent i = getIntent();
-        _idPista = i.getIntExtra("pista", 0);
+        _idPista = getIntent().getStringExtra("pista");
+        if (_idPista == null) { 
+	        Log.v(LOG, "DATA-STRING: "+i.getDataString());
+	        Log.v(LOG, "PARAMETERS: "+i.getData().getQueryParameter("pista"));
+	        _idPista = i.getData().getQueryParameter("pista");
+        }
         
         _pista = (TextView) findViewById(R.id.pista);
         
