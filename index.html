@@ -682,6 +682,202 @@ else
 </section>
 
 <section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>captureQRCodeActivity</dt>
+</dl>
+<pre class="brush: js;">
+public class captureQRCodeActivity extends Activity {
+
+	private static final String LOG = "GeoRemindMe";
+
+	private Controller _controller;
+
+	private MVCViewComponent _connector = null;
+
+	// Interface
+	private TextView _pista;
+	private ProgressDialog _dialog;
+
+	private String _idPista = null;
+</pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>captureQRCodeActivity</dt>
+</dl>
+<pre class="brush: js;">
+public void onCreate(Bundle savedInstanceState)
+	{
+        super.onCreate(savedInstanceState);
+        
+        Log.v(LOG, "ConectActivity-OnCreate ()");        
+        
+        // Delete title
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_PROGRESS);
+        
+        setContentView(R.layout.captureqr);
+        
+        // Capturamos el Intent y vemos si tiene algun dato para nosotros
+        Intent i = getIntent();
+        _idPista = getIntent().getStringExtra("pista");
+        if (_idPista == null) { 
+	        Log.v(LOG, "DATA-STRING: "+i.getDataString());
+	        Log.v(LOG, "PARAMETERS: "+i.getData().getQueryParameter("pista"));
+	        _idPista = i.getData().getQueryParameter("pista");
+        }
+</pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>captureQRCodeActivity</dt>
+</dl>
+<pre class="brush: js;">
+_pista = (TextView) findViewById(R.id.pista);
+        
+// Controller
+_controller = Controller.getInstace(getApplicationContext());
+</pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>captureQRCodeActivity</dt>
+</dl>
+<pre class="brush: js;">
+// Manejador de mensajes
+        _connector = new MVCViewComponent(_controller)
+		{
+
+			public boolean handleMessage(Message msg) 
+			{
+				// TODO Auto-generated method stub
+				Log.v(LOG, "captureQRCodeActivity-Receive What: " + msg.what + " || Obj: " + msg.obj); 
+
+				// Capturamos los mensajes que le interesan a esta interfaz y realizamos las acciones necesarias
+				switch (msg.what) {
+					case RESPONSE_OK:
+						_dialog.cancel();
+						_pista.setText((CharSequence) msg.obj);
+						return true;
+					case RESPONSE_ERROR:
+						_dialog.cancel();
+						_pista.setTextColor(Color.RED);
+						_pista.setText("ERROR Grumete!!");
+						Toast.makeText(getApplicationContext(),"Ocurrio un error obteniendo tu pista. Tirar al desarrollador a los tiburones!! Arghhhh!", Toast.LENGTH_LONG).show();
+						return true;
+				}
+				return false;
+			}
+        	
+		};
+	}
+</pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>captureQRCodeActivity</dt>
+</dl>
+<pre class="brush: js;">
+</pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>captureQRCodeActivity</dt>
+</dl>
+<pre class="brush: js;">
+@Override
+public void onStart()
+{
+	super.onStart();
+
+}
+
+@Override
+public void onResume()
+{
+	super.onResume();
+	Log.v(LOG, "captureQRCodeActivity-onResume ()");
+	super.onResume();
+
+	// Lazamos un dialgo
+	_dialog = ProgressDialog.show(this, "", getString(R.string.dialogo), true);
+
+	// Registramos el componente
+	_controller.registerMVCComponent(_connector);
+
+	// Mandamos al petición al controlador
+	_connector.sendMessage(REQUEST, String.valueOf(_idPista));
+}
+</pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>captureQRCodeActivity</dt>
+</dl>
+<pre class="brush: js;">
+@Override
+public void onStop()
+{
+	super.onStop();
+	_controller.unregisterMVCComponent(_connector);
+}
+</pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>Manifest.xml</dt>
+</dl>
+<pre class="brush: js;">
+<uses-permission android:name="android.permission.INTERNET"/>
+</pre>
+</section>
+
+<section class="slide">
+ <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Android_QR_Code!</div>
+<dl>
+<dt>Manifest.xml</dt>
+</dl>
+<pre class="brush: js;">
+<activity
+        	android:name=".view.captureQRCodeActivity"
+        	android:label="@string/app_name"	 
+        >
+        	<intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="geo" android:host="android.georemindme.com" />
+
+       		</intent-filter>
+        </activity>
+</pre>
+</section>
+
+<section class="slide">
  <h1>¡Hora de programar!</h1>
 <!--<img src="./img/cupcake.gif">-->
 </section>
