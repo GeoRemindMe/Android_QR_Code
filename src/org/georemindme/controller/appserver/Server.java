@@ -89,7 +89,7 @@ public class Server implements Serializable {
 		Log.v(LOG, "Server-dameLaSiguientePista ()");
 		
 		// Preparamos una hebra que será la que se encarga de la conexion con el servidor
-		Thread thread = new Thread("getTimeline_Thread")
+		Thread thread = new Thread("dameLaSiguientePista_Thread")
 		{
 			public void run ()
 			{
