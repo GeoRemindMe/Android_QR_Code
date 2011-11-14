@@ -34,7 +34,7 @@
 
 <section class="slide">
  <h1>Android</h1>
-<!--<img src="./img/cupcake.gif">-->
+<div style="margin-top:200px;" ><img src="./img/tartaleta.png"></div>
 </section>
 
 <section class="slide">
@@ -45,9 +45,6 @@
 	<ul>
 		<li>
 			Twitter: <a href="mailto:jorgelp@us.es">&lt;rcabamo&gt;</a>
-		</li>
-		<li>
-			Linkedin: <a href="mailto:jorgelp@us.es">&lt;rcabamo&gt;</a>
 		</li>
 	</ul>
 
@@ -70,19 +67,8 @@
 	<strong>Android</strong> es un sistema operativo basado en el núcleo Linux diseñado originalmente para dispositivos móviles, pero que posteriormente se expandió su desarrollo para soportar otros dispositivos tales como tablet, reproductores MP3, netbook, PC, etc. 
 </div>
 </section>
-
-<section class="slide">
- <h2>¿Qué es Android para un NO Freak?</h2>
-<dl>
- <dt>Definición</dt>
-</dl>
- <div class="command">
-	<strong>Android</strong> es un sistema operativo basado en el núcleo Linux diseñado originalmente para dispositivos móviles, pero que posteriormente se expandió su desarrollo para soportar otros dispositivos tales como tablet, reproductores MP3, netbook, PC, etc. 
- </div>
- <img src="http://farm4.static.flickr.com/3138/3034640646_b7f1ba5ec8.jpg" />
-</section>
-
-<section class="slide">
+ 
+ <section class="slide">
  <h2>¿Qué es Android para nosotros?</h2>
  <img src="http://developer.android.com/images/system-architecture.jpg" />
 </section>
@@ -187,6 +173,7 @@
 
 <section class="slide">
  <h2>¿Cómo se programa en Android?</h2>
+ <div style="text-align:center;">Hello World!</div>
 <dl>
 	<dt>Resultado:</dt>
 </dl>
@@ -205,26 +192,6 @@ public class mainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-	}
-	@Override
-	public void onStart(){
-		super.onStart();
-	}
-	@Override
-	public void onResume(){
-		super.onResume();
-	}
-	@Override
-	public void onPause(){
-		super.onPause();
-	}
-	@Override
-	public void onStop(){
-		super.onStop();
-	}
-	@Override
-	public void onDestroy(){
-		super.onDestroy();
 	}
 }
 </pre>
@@ -286,8 +253,9 @@ package="com.pepico">
 <br>
 </dl>
 <ul>
-	<li>Clonar proyecto</li>
+	<li>Clonar proyecto o bajar cambios</li>
 	<div class="command">git <strong>clone</strong> git@github.com:GeoRemindMe/Android_QR_Code.git</div>
+	<div class="command">git <strong>pull</strong> origin master</div>
 	<li>Importar a Eclipse</li>
 	<div class="command">Archivo -> Importar</div>
 	<li>Si da algún error</li>
@@ -489,7 +457,7 @@ public interface ControllerProtocol
 			Log.v(LOG, "Server-dameLaSiguientePista ()");
 
 			// Preparamos una hebra que será la que se encarga de la conexion con el servidor
-			Thread thread = new Thread("getTimeline_Thread")
+			Thread thread = new Thread("dameLaSiguientePista_Thread")
 			{
 				public void run ()
 				{
